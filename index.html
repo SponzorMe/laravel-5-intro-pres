@@ -111,6 +111,7 @@ App::bind('KVStoreInterface', 'KVStore\Redis');
 
 $kvstore = App::make('KVStoreInterface');
 </code></pre>
+                    <p>Automatically resolves dependencies</p>
                     </section>
                     <section>
                         <h2>Lots of others</h2>
@@ -159,13 +160,66 @@ Route::get("/hanky", function() {
                     <pre><code data-trim>
                     $ php artisan migrate:make --create --table=guests create_guests_table
                     </code></pre>
-                    <pre><code>... file contents ...</code></pre>
+                    <pre><code data-trim>
+class CreateGuestsTable extends Migration { 
+ 
+    public function up() 
+    { 
+        Schema::create('guests', function(Blueprint $table) 
+        { 
+            // Write this part
+            $table->increments('id'); 
+            $table->string('name'); 
+            $table->string('message'); 
+            $table->timestamps(); 
+        }); 
+    }
+
+    public funciton down() {}
+}
+</code></pre>
                     <pre><code>$ php artisan migrate</code></pre>
                     </section>
                     <section>
+                    <h2>Make the Model</h2>
+                    <pre><code>$ vim app/models/Guest.php</code></pre>
+                    <pre><code data-trim>
+class Guest extends \Eloquent
+{ 
+    public $fillable = array('name', 'message');
+}
+                    </code></pre>
+                    </section>
+                    <section>
                     <h2>Generate Controller</h2> 
-                    <pre><code>$ php artisan controller::make GuestbookController</code></pre>
-                    <pre><code>... file contents ...</code></pre>
+                    <pre><code>$ php artisan controller:make GuestbookController</code></pre>
+                    <pre><code data-trim>
+class GuestbookController extends \BaseController { 
+    public function index() {
+        return Guest::all();
+    }
+    public function show($id) {
+        $guest = Guest::find($id); 
+        return ($guest) ?: Response::make(null, 404); 
+    }
+    public function store() {
+        $guest = Guest::create(Input::only(array('name', 'message')));
+        return Response::make(null, 201, array('Location' =&gt; URL::to('guests', array($guest-&gt;id))));
+    }
+    public function update() {
+        $guest = Guest::find($id);
+        if ( ! $guest) return Response::make(null, 404); 
+        $guest-&gt;fill(Input::only(array('name', 'message')))-&gt;save();
+        return Response::make(null, 205, array('Location' =&gt; URL::to('guests', array($guest-&gt;id)))); 
+    }
+    public function destroy($id) {
+        $guest = Guest::find($id);
+        if ( ! $guest) return Response::make(null, 404); 
+        $guest-&gt;delete();
+        return Response::make(null, 204);
+    }
+}
+                    </code></pre>
                     </section>
                     <section>
                     <h2>Route to Controller</h2> 
@@ -173,14 +227,15 @@ Route::get("/hanky", function() {
                     </section>
                     <section>
                     <h2>Use it.</h2> 
+                    <pre><code data-trim>$ php artisan serve</code></pre>
                     <pre><code data-trim>
-$ curl -X POST --data="name=David&amp;msg=My%20message%20here." http://localhost:8000/guests
+$ curl --data "name=David&amp;message=My%20message%20here." http://localhost:8000/guests
 HTTP/1.0 201 Created
 Location: http://localhost:8000/guests/1
 
 $ curl http://localhost:8000/guests
 ...
-[{id:1, name:"David", msg:"My message here."}]
+[{"id":"1","name":"David","message":"My message here.","created_at":"2013-11-26 17:34:27","updated_at":"2013-11-26 17:34:27"}]
 </code></pre>
                     </section>
 
