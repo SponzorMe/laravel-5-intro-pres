@@ -120,17 +120,23 @@ $kvstore = App::make('KVStoreInterface');
                             <li>Cache</li>
                             <li>Event</li>
                             <li>Mail</li>
-                        </ul>
-                        <ul>
                             <li>Queue</li>
                             <li>Cookie</li>
-                            <li>string and array helpers</li>
-                            <li></li>
                         </ul>
                         <ul>
+                            <li>Auth</li>
+                            <li>Log</li>
+                            <li>Config</li>
+                            <li>Blade</li>
+                            <li>Lang</li>
+                            <li>Paginator</li>
+                        </ul>
+                        <ul>
+                            <li>Form Model Binding</li>
+                            <li>string and array helpers</li>
                             <li>Migrations</li>
-                            <li>Seeds</li>
-                            <li></li>
+                            <li>Database Seeds</li>
+                            <li>Console (artisan)</li>
                             <li>...</li>
                         </ul>
                     </section>
@@ -168,10 +174,10 @@ class CreateGuestsTable extends Migration {
         Schema::create('guests', function(Blueprint $table) 
         { 
             // Write this part
-            $table->increments('id'); 
-            $table->string('name'); 
-            $table->string('message'); 
-            $table->timestamps(); 
+            $table-&gt;increments('id'); 
+            $table-&gt;string('name'); 
+            $table-&gt;string('message'); 
+            $table-&gt;timestamps(); 
         }); 
     }
 
