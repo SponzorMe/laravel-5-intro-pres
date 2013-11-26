@@ -159,7 +159,7 @@ Route::get("/hanky", function() {
 				<section>
                     <section>
 					<h2>How do I do something useful?</h2>
-                    <h3>Zero to CRUD in 60 seconds</h3>
+                    <h3 class="fragment">Zero to CRUD in 60 seconds</h3>
                     </section>
                     <section>
                     <h2>Generate Migration</h2>
@@ -205,22 +205,19 @@ class GuestbookController extends \BaseController {
         return Guest::all();
     }
     public function show($id) {
-        $guest = Guest::find($id); 
-        return ($guest) ?: Response::make(null, 404); 
+        return (Guest::find($id)) ?: Response::make(null, 404);
     }
     public function store() {
         $guest = Guest::create(Input::only(array('name', 'message')));
         return Response::make(null, 201, array('Location' =&gt; URL::to('guests', array($guest-&gt;id))));
     }
     public function update() {
-        $guest = Guest::find($id);
-        if ( ! $guest) return Response::make(null, 404); 
+        if ( ! $guest = Guest::find($id)) return Response::make(null, 404); 
         $guest-&gt;fill(Input::only(array('name', 'message')))-&gt;save();
         return Response::make(null, 205, array('Location' =&gt; URL::to('guests', array($guest-&gt;id)))); 
     }
     public function destroy($id) {
-        $guest = Guest::find($id);
-        if ( ! $guest) return Response::make(null, 404); 
+        if ( ! $guest = Guest::find($id)) return Response::make(null, 404); 
         $guest-&gt;delete();
         return Response::make(null, 204);
     }
@@ -235,12 +232,14 @@ class GuestbookController extends \BaseController {
                     <h2>Use it.</h2> 
                     <pre><code data-trim>$ php artisan serve</code></pre>
                     <pre><code data-trim>
-$ curl --data "name=David&amp;message=My%20message%20here." http://localhost:8000/guests
+$ curl -i --data "name=David&amp;message=My%20message%20here." \
+  http://localhost:8000/guests
+
 HTTP/1.0 201 Created
 Location: http://localhost:8000/guests/1
 
-$ curl http://localhost:8000/guests
-...
+$ curl -q http://localhost:8000/guests
+
 [{"id":"1","name":"David","message":"My message here.","created_at":"2013-11-26 17:34:27","updated_at":"2013-11-26 17:34:27"}]
 </code></pre>
                     </section>
