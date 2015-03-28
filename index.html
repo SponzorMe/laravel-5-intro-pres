@@ -36,7 +36,7 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section>
+				<section data-background="#f4645f">
 					<h1>Intro to Laravel 4</h1>
 					<h3>A Modern PHP Framework</h3>
 					<p>
@@ -153,7 +153,7 @@ Route::get("/hanky", function() {
 });
                     </code></pre>
                     <pre class="fragment"><code>$ php artisan serve &amp;; open http://localhost:8000/hanky</code></pre>
-                        
+
 				</section>
 
 				<section>
@@ -167,18 +167,18 @@ Route::get("/hanky", function() {
                     $ php artisan migrate:make --create --table=guests create_guests_table
                     </code></pre>
                     <pre><code data-trim>
-class CreateGuestsTable extends Migration { 
- 
-    public function up() 
-    { 
-        Schema::create('guests', function(Blueprint $table) 
-        { 
+class CreateGuestsTable extends Migration {
+
+    public function up()
+    {
+        Schema::create('guests', function(Blueprint $table)
+        {
             // You write this part
-            $table-&gt;increments('id'); 
-            $table-&gt;string('name'); 
-            $table-&gt;string('message'); 
-            $table-&gt;timestamps(); 
-        }); 
+            $table-&gt;increments('id');
+            $table-&gt;string('name');
+            $table-&gt;string('message');
+            $table-&gt;timestamps();
+        });
     }
 
     public funciton down() {}
@@ -191,16 +191,16 @@ class CreateGuestsTable extends Migration {
                     <pre><code>$ vim app/models/Guest.php</code></pre>
                     <pre><code data-trim>
 class Guest extends \Eloquent
-{ 
+{
     public $fillable = array('name', 'message');
 }
                     </code></pre>
                     </section>
                     <section>
-                    <h2>Generate Controller</h2> 
+                    <h2>Generate Controller</h2>
                     <pre><code>$ php artisan controller:make GuestbookController</code></pre>
                     <pre><code data-trim>
-class GuestbookController extends \BaseController { 
+class GuestbookController extends \BaseController {
     public function index() {
         return Guest::all();
     }
@@ -212,12 +212,12 @@ class GuestbookController extends \BaseController {
         return Response::make(null, 201, array('Location' =&gt; URL::to('guests', array($guest-&gt;id))));
     }
     public function update() {
-        if ( ! $guest = Guest::find($id)) return Response::make(null, 404); 
+        if ( ! $guest = Guest::find($id)) return Response::make(null, 404);
         $guest-&gt;fill(Input::only(array('name', 'message')))-&gt;save();
-        return Response::make(null, 205, array('Location' =&gt; URL::to('guests', array($guest-&gt;id)))); 
+        return Response::make(null, 205, array('Location' =&gt; URL::to('guests', array($guest-&gt;id))));
     }
     public function destroy($id) {
-        if ( ! $guest = Guest::find($id)) return Response::make(null, 404); 
+        if ( ! $guest = Guest::find($id)) return Response::make(null, 404);
         $guest-&gt;delete();
         return Response::make(null, 204);
     }
@@ -225,11 +225,11 @@ class GuestbookController extends \BaseController {
                     </code></pre>
                     </section>
                     <section>
-                    <h2>Route to Controller</h2> 
+                    <h2>Route to Controller</h2>
                     <pre><code data-trim>Route::resource('guests', 'GuestbookController');</code></pre>
                     </section>
                     <section>
-                    <h2>Use it.</h2> 
+                    <h2>Use it.</h2>
                     <pre><code data-trim>$ php artisan serve</code></pre>
                     <pre><code data-trim>
 $ curl -i --data "name=David&amp;message=My%20message%20here." \
