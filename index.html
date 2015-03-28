@@ -4,25 +4,25 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Introduction to Laravel 4</title>
+		<title>Bootcamp Laravel 5</title>
 
-		<meta name="description" content="Introduction to the PHP Framework Laravel 4">
-		<meta name="author" content="David Jonas">
+		<meta name="description" content="Bootcamp Laravel 5">
+		<meta name="author" content="Carlos Rojas">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="revealjs/css/reveal.min.css">
-		<link rel="stylesheet" href="revealjs/css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
 
 		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="revealjs/lib/css/zenburn.css">
+		<link rel="stylesheet" href="lib/css/zenburn.css">
 
 		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 		<script>
-			document.write( '<link rel="stylesheet" href="revealjs/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 		</script>
 
 		<!--[if lt IE 9]>
@@ -37,238 +37,148 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section data-background="#f4645f">
-					<h1>Intro to Laravel 4</h1>
-					<h3>A Modern PHP Framework</h3>
+					<h1>Bootcamp Laravel 5</h1>
+					<h3><i>Un Framework Moderno de PHP</i></h3>
 					<p>
-						<small>Created by <a href="http://splitretina.com">David Jonas</a> / <a href="http://twitter.com/splitretina">@splitretina</a></small>
+						<small>@laravelco #laravelco</small>
 					</p>
 				</section>
 
 				<section>
-					<h2>What is Laravel and what are its goals?</h2>
-                    <ul>
-					<li class="fragment">
-                        A web application framework with expressive, elegant syntax.
-					</li>
-                    <li class="fragment">
-                    Strives to be accessible yet powerful
-                    </li>
-                    <li class="fragment">Emphasis on testability</li>
-                    <li class="fragment">Great documentation</li>
-                    </ul>
-
+				<section data-background="#f4645f">
+					<h2>Multiples Voluntarios y Patrocinadores</h2>
+				</section>
+				<section data-background="#ffffff">
+					<p><img width="55%" style="background:none; border:none; box-shadow:none;" src="images/sponsors/developers.png"/></p>
+				</section>
+				<section data-background="#ffffff">
+					<p><img width="55%" style="background:none; border:none; box-shadow:none;" src="images/sponsors/atomhouse.png"/></p>
+				</section>
+				<section data-background="#ffffff">
+					<p><img width="55%" style="background:none; border:none; box-shadow:none;" src="images/volunteers/phpcolombia.jpeg"/></p>
+				</section>
+				<section data-background="#ffffff">
+					<h2 style="color:#000">@Laravelco</h2>
+				</section>
+				<section data-background="#ffffff">
+					<h3 style="color:#000">phpacademy.co</h3>
 				</section>
 
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>What are some handy features?</h2>
-					</section>
-					<section>
-						<h2>Input Validation</h2>
-                        <pre><code data-trim>
-$data = array('name' =&gt; 'David');
-$rules = array('name' =&gt; 'required|between:4,50');
+			</section>
 
-$validator = Validator::make($data, $rules);
+			<section>
+			<section data-background="#f4645f">
+				<h1>¿Por que?</h1>
+			</section>
+			<section data-background="#ffffff">
+				<h3 style="color:#000">Networking</h3>
+			</section>
+			<section data-background="#ffffff">
+				<h3 style="color:#000">Progreso</h3>
+			</section>
+			<section data-background="#ffffff">
+				<h3 style="color:#000">Pasión</h3>
+			</section>
+			</section>
 
-if ($validator-&gt;fails())
-{
-    return Redirect::to('page')->withErrors($validator);
-}
-</code></pre>
-					</section>
-					<section>
-						<h2>Query Builder</h2>
-                        <pre><code>$post = DB::table('posts')-&gt;where('slug', '=', 'l4-presentation')-&gt;first();</code></pre>
-                        <h2>Eloquent ORM</h2>
-                        <pre><code>$posts = Post::withTag('laravel')-&gt;all();</code></pre>
-					</section>
-					<section>
-						<h2>Facades</h2>
-                        <p>Global scope, use them from anywhere</p>
-                        <pre><code data-trim>
-function logSignin()
-{
-    Log::info(sprintf(
-        "User signed in: user_id=%s, remote_ip=%s",
-        Auth::user()-&gt;id,
-        Request::server()-&gt;getClientIp()
-    ));
-}
-                        </code></pre>
-					</section>
-                    <section>
-                        <h2>Dependency Injection Container</h2>
-                        <p>The App facade is a DI container</p>
-                        <pre><code data-trim>
-App::share('KVStore\Redis', function($app)
-{
-    return new KVStore\Redis($app['config']-&gt;get('redis'));
-});
+			<section>
+			<section data-background="#f4645f">
+				<h2>Proximamente...</h2>
+			</section>
+			<section data-background="#ffffff">
+				<h2 style="color:#000">Microcomunidades</h2>
+				<small style="color:#000">#laravelco #purephp #phprightwayco</small>
+			</section>
+			<section data-background="#ffffff">
+				<h2 style="color:#000">Lightning Talks</h2>
+			</section>
+			<section data-background="#ffffff">
+				<h2 style="color:#000">PHP Conference 2015</h2>
+			</section>
+			<section data-background="#ffffff">
+				<h4 style="color:#000">phpcolombiameetup@googlegroups.com</h4>
+			</section>
+			</section>
 
-App::bind('KVStoreInterface', 'KVStore\Redis');
+			<section data-background="#ffffff">
+				<img width="55%" style="background:none; border:none; box-shadow:none;" src="images/logo.png"/>
+			</section>
 
-$kvstore = App::make('KVStoreInterface');
-</code></pre>
-                    <p>Automatically resolves dependencies</p>
-                    </section>
-                    <section>
-                        <h2>Lots of others</h2>
-                        <ul>
-                            <li>Session</li>
-                            <li>Cache</li>
-                            <li>Event</li>
-                            <li>Mail</li>
-                            <li>Queue</li>
-                            <li>Cookie</li>
-                        </ul>
-                        <ul>
-                            <li>Auth</li>
-                            <li>Log</li>
-                            <li>Config</li>
-                            <li>Blade</li>
-                            <li>Lang</li>
-                            <li>Paginator</li>
-                        </ul>
-                        <ul>
-                            <li>Form Model Binding</li>
-                            <li>string and array helpers</li>
-                            <li>Migrations</li>
-                            <li>Database Seeds</li>
-                            <li>Console (artisan)</li>
-                            <li>...</li>
-                        </ul>
-                    </section>
+			<section data-background="images/90F8aUepslB84.gif" class="present" data-background-image="images/90F8aUepslB84.gif">
+			</section>
+
+			<section>
+				<section data-background="#f4645f">
+					<h1>Novedades</h1>
 				</section>
-
-				<section>
-					<h2>How do I do something simple?</h2>
-                    <pre class="fragment"><code>$ wget http://getcomposer.org/composer.phar</code></pre>
-                    <pre class="fragment"><code>$ php composer.phar create-project laravel/laravel simple</code></pre>
-                    <pre class="fragment"><code>$ cd simple; vi app/routes.php</code></pre>
-                    <pre class="fragment"><code data-trim>
-Route::get("/hanky", function() {
-    return "Howdy ho!";
-});
-                    </code></pre>
-                    <pre class="fragment"><code>$ php artisan serve &amp;; open http://localhost:8000/hanky</code></pre>
-
+				<section data-background="#f4645f">
+					<h1>Nueva Estructura de Folderes</h1>
 				</section>
-
-				<section>
-                    <section>
-					<h2>How do I do something useful?</h2>
-                    <h3 class="fragment">Zero to CRUD in 60 seconds</h3>
-                    </section>
-                    <section>
-                    <h2>Generate Migration</h2>
-                    <pre><code data-trim>
-                    $ php artisan migrate:make --create --table=guests create_guests_table
-                    </code></pre>
-                    <pre><code data-trim>
-class CreateGuestsTable extends Migration {
-
-    public function up()
-    {
-        Schema::create('guests', function(Blueprint $table)
-        {
-            // You write this part
-            $table-&gt;increments('id');
-            $table-&gt;string('name');
-            $table-&gt;string('message');
-            $table-&gt;timestamps();
-        });
-    }
-
-    public funciton down() {}
-}
-</code></pre>
-                    <pre><code>$ php artisan migrate</code></pre>
-                    </section>
-                    <section>
-                    <h2>Make the Model</h2>
-                    <pre><code>$ vim app/models/Guest.php</code></pre>
-                    <pre><code data-trim>
-class Guest extends \Eloquent
-{
-    public $fillable = array('name', 'message');
-}
-                    </code></pre>
-                    </section>
-                    <section>
-                    <h2>Generate Controller</h2>
-                    <pre><code>$ php artisan controller:make GuestbookController</code></pre>
-                    <pre><code data-trim>
-class GuestbookController extends \BaseController {
-    public function index() {
-        return Guest::all();
-    }
-    public function show($id) {
-        return (Guest::find($id)) ?: Response::make(null, 404);
-    }
-    public function store() {
-        $guest = Guest::create(Input::only(array('name', 'message')));
-        return Response::make(null, 201, array('Location' =&gt; URL::to('guests', array($guest-&gt;id))));
-    }
-    public function update() {
-        if ( ! $guest = Guest::find($id)) return Response::make(null, 404);
-        $guest-&gt;fill(Input::only(array('name', 'message')))-&gt;save();
-        return Response::make(null, 205, array('Location' =&gt; URL::to('guests', array($guest-&gt;id))));
-    }
-    public function destroy($id) {
-        if ( ! $guest = Guest::find($id)) return Response::make(null, 404);
-        $guest-&gt;delete();
-        return Response::make(null, 204);
-    }
-}
-                    </code></pre>
-                    </section>
-                    <section>
-                    <h2>Route to Controller</h2>
-                    <pre><code data-trim>Route::resource('guests', 'GuestbookController');</code></pre>
-                    </section>
-                    <section>
-                    <h2>Use it.</h2>
-                    <pre><code data-trim>$ php artisan serve</code></pre>
-                    <pre><code data-trim>
-$ curl -i --data "name=David&amp;message=My%20message%20here." \
-  http://localhost:8000/guests
-
-HTTP/1.0 201 Created
-Location: http://localhost:8000/guests/1
-
-$ curl -q http://localhost:8000/guests
-
-[{"id":"1","name":"David","message":"My message here.","created_at":"2013-11-26 17:34:27","updated_at":"2013-11-26 17:34:27"}]
-</code></pre>
-                    </section>
-
+				<section data-background="#f4645f">
+					<h1>Contracts</h1>
 				</section>
-
-                <section>
-                <h2> Where do I learn more?</h2>
-                <ul>
-                    <li><a href="http://laravel.com">laravel.com</a>: docs, api, forums</li>
-                    <li><a href="http://laravel.io">http://laravel.io/</a>: podcasts, news</li>
-                    <li>Twitter, <a href="http://twitter.com/laravelphp">@laravelphp</a></li>
-                    <li>IRC, <a href="http://laravel.io/irc">http://laravel.io/irc</a></li>
-                    <li>Paid
-                    <ul>
-                        <li><a href="https://leanpub.com/laravel">https://leanpub.com/laravel</a>: Author's book</li>
-                        <li><a href="https://laracasts.com">https://laracasts.com/</a>: Has many free videos as well</li>
-                        <li><a href="https://leanpub.com/laravel-testing-decoded">https://leanpub.com/laravel-testing-decoded</a></li>
-                    </ul>
-                    </li>
-                </ul>
-                </section>
+				<section data-background="#f4645f">
+					<h1>Route Cache</h1>
+				</section>
+				<section data-background="#f4645f">
+					<h1>Route Middleware</h1>
+				</section>
+				<section data-background="#f4645f">
+					<h1>Controller Method Injection</h1>
+				</section>
+				<section data-background="#f4645f">
+					<h1>Authentication Scaffolding</h1>
+				</section>
+				<section data-background="#f4645f">
+					<h1>Event Objects</h1>
+				</section>
+				<section data-background="#f4645f">
+					<h1>Commands / Queueing</h1>
+				</section>
+				<section data-background="#f4645f">
+					<h1>Database Queue</h1>
+				</section>
+				<section data-background="#f4645f">
+					<h1>Laravel Scheduler</h1>
+				</section>
+				<section data-background="#f4645f">
+					<h1>Tinker / Psysh</h1>
+				</section>
+				<section data-background="#f4645f">
+					<h1>DotEnv</h1>
+				</section>
+				<section data-background="#f4645f">
+					<h1>Laravel Elixir</h1>
+				</section>
+				<section data-background="#f4645f">
+					<h1>Laravel Socialite</h1>
+				</section>
+				<section data-background="#f4645f">
+					<h1>Flysystem Integration</h1>
+				</section>
+				<section data-background="#f4645f">
+					<h1>Form Requests</h1>
+				</section>
+				<section data-background="#f4645f">
+					<h1>Simple Controller Request Validation</h1>
+				</section>
+				<section data-background="#f4645f">
+					<h1>New Generators</h1>
+				</section>
+				<section data-background="#f4645f">
+					<h1>Configuration Cache</h1>
+				</section>
+				<section data-background="#f4645f">
+					<h1>Symfony VarDumper</h1>
+				</section>
+			</section>
 
 			</div>
 
 		</div>
 
-		<script src="revealjs/lib/js/head.min.js"></script>
-		<script src="revealjs/js/reveal.min.js"></script>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
 
 		<script>
 
@@ -285,12 +195,12 @@ $ curl -q http://localhost:8000/guests
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
-					{ src: 'revealjs/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'revealjs/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'revealjs/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
 
