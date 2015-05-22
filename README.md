@@ -12,5 +12,7 @@ Los archivos de la presentacion estan en el branch gh-pages.
     $ sudo npm install
 4. Iniciar el proyecto.
     $ grunt serve.
+5. El codigo de la API rest desarrollada en el meetup esta en la rama master
+	$ git checkout gh-pages
 
-Cualquier duda escribir a carlos@sponzor.me
+Cualquier duda escribir a carlos@sponzor.me o sebastian@sponzor.me
